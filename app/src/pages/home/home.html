@@ -90,21 +90,54 @@
   </div>
 
 <!-- Um dialog simples contendo um form -->
-<dialog open id ="myForm">
-  <form method="dialog">
-    <section class="form-container">
-      <!-- <p><label for="favAnimal">Favorite animal:</label>
-      <select id="favAnimal">
-        <option></option>
-        <option>Brine shrimp</option>
-        <option>Red panda</option>
-        <option>Spider monkey</option>
-      </select></p> -->
+  <dialog open id ="myForm">
+    <form method="dialog">
+        <section class="form-container">
+            <!-- <p><label for="favAnimal">Favorite animal:</label>
+            <select id="favAnimal">
+              <option></option>
+              <option>Brine shrimp</option>
+              <option>Red panda</option>
+              <option>Spider monkey</option>
+            </select></p> -->
+          <div class = "text" >
+            <button type="button" class="cancel" v-on:click="closeForm()">X</button>
+            <h1> Encaminhar </h1>
+
+          </div>
+
+          <div class="contacts2">
+            <ul>
+              <li v-for="contact in contacts" :key="contact.name" class="contact2">
+                <div class="wrap" v-on:click="encaminhar(profile, contact)">
+                  <img :src="contact.picture ? getUrlImage(contact.picture) : imageDefaultUser" />
+                  <div class="meta">
+                    <p class="name"> {{ contact.name }} 
+                    </p>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+        </section>
+      <!-- <menu>
+        <button id="cancel" type="reset">Cancel</button>
+        <button type="submit">Confirm</button>
+      </menu> -->
+    </form>
+  </dialog>
+
+
+
+
+  <!-- <div open id="myForm">
+    <div class="form-popup" >
+    <form action= "talk" class="form-container">
       <div class = "text" >
         <h1> Encaminhar </h1>
         <button type="button" class="cancel" v-on:click="closeForm()">X</button>
       </div>
-
       <div id="contacts2">
         <ul>
           <li v-for="contact in contacts" :key="contact.name" class="contact">
@@ -119,43 +152,7 @@
           </li>
         </ul>
       </div>
-
-    </section>
-    <menu>
-      <button id="cancel" type="reset">Cancel</button>
-      <button type="submit">Confirm</button>
-    </menu>
-  </form>
-</dialog>
-
-<menu>
-  <button id="updateDetails">Update details</button>
-</menu>
-
-
-
-<!-- <div open id="myForm">
-  <div class="form-popup" >
-  <form action= "talk" class="form-container">
-    <div class = "text" >
-      <h1> Encaminhar </h1>
-      <button type="button" class="cancel" v-on:click="closeForm()">X</button>
-    </div>
-    <div id="contacts2">
-      <ul>
-        <li v-for="contact in contacts" :key="contact.name" class="contact">
-          <div class="wrap" v-on:click="encaminhar(profile, contact)">
-            <img :src="contact.picture ? getUrlImage(contact.picture) : imageDefaultUser" />
-            <div class="meta">
-              <p class="name"> {{ contact.name }} 
-              </p>
-              
-            </div>
-          </div>
-        </li>
-      </ul>
-    </div>
-  </form>
-</div> -->
+    </form>
+  </div> -->
 
 </div>

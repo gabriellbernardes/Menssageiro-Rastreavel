@@ -791,15 +791,7 @@ div#app {
 
 
 /* The popup form - hidden by default */
-#myForm {
-  position: fixed;
-  left: 0;
-  top: 50px;
-  border: 3px solid #000000;
-  border-style: dotted;
-  border-radius: 5px;
-  background-color: rgba(174, 182, 72, 0.664);
-}
+
 .idcarteira {
   font-size: 12px;
   padding-left: 15px;
@@ -807,30 +799,40 @@ div#app {
   font-family: 'Courier New', Courier, monospace;
   
 }
-/* Add styles to the form container */
+/* Formulario*/
 
+#myForm {
+  position: fixed;
+  left: 200px;
+  top: 250px;
+  border: 3px solid #000000;
+  border-style: dotted;
+  border-radius: 50px;
+  background-color: rgba(216, 141, 141, 0.89);
+}
 
-
-/* Set a style for the submit/login button */
-
-/* Add a red background color to the cancel button */
 #myForm .form-container .text {
 
   border: 3px solid #000000;
   border-radius: 5px;
-  background-color: rgba(42, 115, 175, 0.411);
+  background-color: rgba(42, 115, 175, 0.301);
 
 }
 #myForm .form-container .text h1{
-
-  margin-left: 20px;
+  
   color: black;
+
 }
 
-#myForm .form-container .cancel {
+#myForm .form-container .text .cancel {
   border: none;
+  border-radius: 5px;
   background-color: rgba(247, 49, 49, 0.884);
- 
+  float: right;
+  margin-right: 5px;
+  margin-top: 5px;
+  font-size: x-large;
+
 }
 
 /* Add some hover effects to buttons */
@@ -839,20 +841,129 @@ div#app {
 }
 
 
-#myForm .form-container #contacts2{
-  width: 100%;
-  overflow-y: scroll; /* Show vertical scrollbar */
-  overflow-x: hidden; /* Show vertical scrollbar */
-
+#myForm .form-container .contacts2{
+  overflow-y: auto;
+  overflow-x: hidden;
+  margin-top: 20px;
  }
 
 @media screen and (max-width: 735px) {
-  #myForm .form-container  #contacts2 {
+  #myForm .form-container  .contacts2 {
     height: calc(100% - 149px);
     overflow-y: hidden;
   }
-  #myForm .form-container #contacts2::-webkit-scrollbar {
+  #myForm .form-container .contacts2::-webkit-scrollbar {
     display: none;
     background: #ffffff;
   }
 }
+
+#myForm .form-container #contacts2.expanded {
+  height: calc(100% - 200px);
+}
+#myForm .form-container .contacts2 ul{
+  position: relative;
+}
+
+#myForm .form-container .contacts2 ul li.contact2 {
+ 
+  font-size: x-large;
+  align-items: center;
+  align-self: center;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 735px) {
+  #myForm .form-container .contacts2 ul li.contact2 {
+    padding: 6px 0 46px 8px;
+  }
+}
+
+#myForm .form-container .contacts2 ul li.contact2:hover {
+  background: rgba(36, 169, 179, 0.37);
+  border-radius: 50px;
+  color: $dark-gray;
+}
+
+#myForm .form-container .contacts2 ul li.contact2.active {
+  background: #ffffff;
+  border-right: 5px solid #ffffff;
+}
+
+
+#myForm .form-container .contacts2 ul li.contact2 .wrap{
+  display: flex;
+  align-items: center;
+  padding: 10px 15px;
+  width: 400px;
+  height: 75px;
+  margin: 0;
+}
+
+
+@media screen and (max-width: 735px) {
+  #myForm .form-container .contacts2 ul li.contact2 .wrap {
+    width: 100%;
+    height: auto;
+  }
+}
+
+#myForm .form-container .contacts2 ul li.contact2 .wrap img {
+  width: 50px;
+  border-radius: 50%;
+  padding: 3px;
+  // border: 2px solid #eaeaea;
+
+}
+@media screen and (max-width: 735px) {
+  #myForm .form-container .contacts2 ul li.contact2 .wrap img {
+    width: 40px;
+    margin-left: 4px;
+  }
+}
+// #frame #sidepanel #profile .wrap img.notification {
+//   border: 2px solid #2ecc71;
+// }
+
+
+#myForm .form-container .contacts2 ul li.contact2 .wrap .meta {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 15px;
+  width: 75%;
+}
+@media screen and (max-width: 735px) {
+  #myForm .form-container .contacts2 .wrap .meta {
+    display: none;
+  }
+}
+
+#myForm .form-container .contacts2 ul li.contact2 .wrap .meta .name {
+  float: left;
+  margin:0 0 0 15px;
+}
+
+
+
+#myForm .form-container .contacts2 ul li.contact2 .wrap .meta .name {
+  font-weight: 600;
+  margin-bottom: 0;
+  padding: 0 0 1px;
+  font-weight: 400;
+  margin-bottom: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+ 
+}
+
+
+
+
+
+
+
+
+ 
+
