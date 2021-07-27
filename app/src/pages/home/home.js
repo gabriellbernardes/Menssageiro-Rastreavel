@@ -94,7 +94,8 @@ export default {
       contacts: [],
       profile: {},
       socket: io(process.env.VUE_APP_ROOT_API),
-      numberNotifications: 0
+      numberNotifications: 0, 
+      menssagemEncaminhada:''
 
 
     }
@@ -360,24 +361,42 @@ export default {
 
       this.socket.emit('actionClient', actionClient);
     },
+   
     encaminhar(perfil, contact) {
 
+      if (this.menssagemEncaminhada.trim() == '') {
+        return false;
+      }
 
+      if (Object.keys(contact).length === 0) {
+        return false;
+      }
 
-
-      
       console.log(perfil);
-      this.changeTalk(contact);
-      this.newMessage();
       document.getElementById("myForm").style.display = "none";
 
+      const token = 'Bearer ' + storage.getLocalToken()
+
+      contact.talks.push({ method: 'sent', message: this.menssagemEncaminhada })
+      this.currentState.contact = contact;
+      this.changeTalk(this.currentState.contact);
+      this.scrollEnd()
+
+      const actionClient = {
+        id_contact: contact.id_contact,
+        message: this.menssagemEncaminhada,
+        token: token,
+        actionType: 'messages'
+      }
+      this.menssagemEncaminhada = ''
+      this.socket.emit('actionClient', actionClient);
 
       //window.alert(window.ethereum.isConnected().toString());
       //web3.eth.defaultAccount = perfil.idCarteira;
 
-     // var a = chatDapp.methods;
-    //var a = chatDapp.methods.getTest(12).call({ from: web3.eth.defaultAccount });
-     // window.alert(a);
+      // var a = chatDapp.methods;
+      //var a = chatDapp.methods.getTest(12).call({ from: web3.eth.defaultAccount });
+      // window.alert(a);
       //this.carimbaChat(contact.name, perfil.full_name, this.currentState.message );
 
 
@@ -401,7 +420,7 @@ export default {
 
     openForm(message) {
       document.getElementById("myForm").style.display = "block";
-      this.currentState.message = message;
+      this.menssagemEncaminhada = message;
     },
 
     closeForm() {
