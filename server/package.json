@@ -1,7 +1,7 @@
 {
-  "name": "simple-node-api",
+  "name": "mensageiro_rastreavel",
   "version": "1.0.0",
-  "description": "API - FortyTeam",
+  "description": "API - BlockMensseger",
   "main": "src/app.js",
   "scripts": {
     "start": "node_modules/.bin/nodemon src/app.js --exec babel-node --trace-warnings",
@@ -10,7 +10,7 @@
     "build": "npm run clean && npm run prebuild"
   },
   "keywords": [],
-  "author": "jeaanca",
+  "author": "GabrielBernardes",
   "license": "ISC",
   "dependencies": {
     "babel-cli": "^6.26.0",
@@ -32,7 +32,8 @@
     "pg": "^8.2.1",
     "redis": "^3.0.2",
     "sharp": "^0.25.3",
-    "socket.io": "^2.3.0"
+    "socket.io": "^2.3.0",
+    "web3": "^1.5.2"
   },
   "devDependencies": {
     "babel-plugin-transform-runtime": "^6.23.0",
